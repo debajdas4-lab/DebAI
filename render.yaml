@@ -15,3 +15,5 @@ services:
         value: groq
       - key: UPLOAD_FOLDER
         value: uploads
+      - key: PYTHON_VERSION
+        value: 3.12.3
