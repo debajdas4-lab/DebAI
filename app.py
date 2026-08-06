@@ -68,7 +68,7 @@ image_path = (
 if image_path.exists():
     st.image(
         str(image_path),
-        width=600
+        use_container_width=True
     )
 else:
     st.warning("Hero image not found.")
