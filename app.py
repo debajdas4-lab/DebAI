@@ -52,24 +52,22 @@ st.set_page_config(
     layout="wide"
 )
 from pathlib import Path
+from PIL import Image, ImageOps
 import streamlit as st
 
-st.set_page_config(
-    page_title="Employee Expense Management",
-    page_icon="💼",
-    layout="wide"
-)
-
-image_path = (
-    Path(__file__).parent
-    / "expense.jpg"
-)
+image_path = Path(__file__).parent / "expense.jpg"
 
 if image_path.exists():
-    st.image(
-        str(image_path),
-        use_container_width=True
+    image = Image.open(image_path)
+
+    banner = ImageOps.fit(
+        image,
+        (1600, 500),
+        method=Image.Resampling.LANCZOS,
+        centering=(0.55, 0.5)
     )
+
+    st.image(banner, use_container_width=True)
 else:
     st.warning("Hero image not found.")
     
