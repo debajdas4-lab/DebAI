@@ -51,7 +51,28 @@ st.set_page_config(
     page_icon="💳",
     layout="wide"
 )
+from pathlib import Path
+import streamlit as st
 
+st.set_page_config(
+    page_title="Employee Expense Management",
+    page_icon="💼",
+    layout="wide"
+)
+
+image_path = (
+    Path(__file__).parent
+    / "expense.jpg"
+)
+
+if image_path.exists():
+    st.image(
+        str(image_path),
+        width=600
+    )
+else:
+    st.warning("Hero image not found.")
+    
 st.title("💳 Expense AI Assistant")
 
 st.write(
