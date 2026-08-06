@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: eem-fastapi
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: MODEL_NAME
+        value: groq/llama-3.3-70b-versatile
+      - key: LLM_PROVIDER
+        value: groq
+      - key: UPLOAD_FOLDER
+        value: uploads
