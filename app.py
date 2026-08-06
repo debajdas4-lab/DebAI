@@ -66,13 +66,14 @@ image_path = Path(__file__).parent / "expense.jpg"
 if image_path.exists():
     image = Image.open(image_path)
 
-    # Resize proportionally; no cropping or deformation
-    image.thumbnail((1600, 900))
+    # Center the image and keep its complete aspect ratio
+    left, center, right = st.columns([1, 3, 1])
 
-    st.image(
-        image,
-        use_container_width=True
-    )
+    with center:
+        st.image(
+            image,
+            width=900
+        )
 else:
     st.warning("Hero image not found.")
     
